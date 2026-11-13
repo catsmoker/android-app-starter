@@ -1,0 +1,286 @@
+[
+  {
+    "source": "gradlew",
+    "sha256": "a5a5c199ba02189ae8c46a334223371a20599d9c298ef65e7540ede4a3f72d59"
+  },
+  {
+    "source": "gradlew.bat",
+    "sha256": "d539676c48b596afda64c963ec8f7ee56c7b3fe7e3b81d1dbe2d1a1e3dd9e9f8"
+  },
+  {
+    "source": "gradle/wrapper/gradle-wrapper.jar",
+    "sha256": "7a9ce74cff467ca1bf60a4fcd9f05185acceda4d0f382434d393e17864262c5d"
+  },
+  {
+    "source": "gradle/wrapper/gradle-wrapper.properties",
+    "sha256": "c7a291a723c4a668c2e8306e2856d86e8f86bdfa89c4fb03ff34161829aee4af"
+  },
+  {
+    "source": "build.gradle.kts",
+    "sha256": "d6cd10059cd461dae07f26b45bfef4bbe9e9f1d93203a13d004bc5f1eee4473a"
+  },
+  {
+    "source": "gradle.properties",
+    "sha256": "810b89537094da7f01130c3b7118934b6db5cb52e39d45a6e8605858b954240e"
+  },
+  {
+    "source": "LICENSE",
+    "sha256": "d79051c43543f95a08e28f7e4f575fd6a289977b54ac7a4cdff4e87419d2ea2a"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/ui/components/AdaptiveChips.kt",
+    "sha256": "e3170014406aac7e1c61bcab45d06987f4ce16580c01c42c3259aa3d8c4bc14f"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/ui/components/AppearanceDialogs.kt",
+    "sha256": "38b6e2097e1071e5d91d58d65e5ab1a9abc4adedc0a1393b19b43e8303dda562"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/ui/components/CatsmokerButton.kt",
+    "sha256": "d89ea52ff9adba68253f471002e590ae7b178ed7d2e93ca50cc7ec0dad7307f2"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/ui/components/DotGridBackground.kt",
+    "sha256": "829ca0e5d5a1fa740b7b34627796caaa012f1e81916d30f49fafcca9fa75310d"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/ui/components/InfoButton.kt",
+    "sha256": "55491b627b4a28c8913310dc007da1f4510c8123de8d11bbe4b299c8b555d351"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/ui/components/LoadingSpinner.kt",
+    "sha256": "d7840902992f728ece9966dc384ed76f123a9a117db98d90e8249f50df5bd447"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/ui/components/QuickActionButton.kt",
+    "sha256": "a74adf79b6c908ab22eb6253275150d6bdd6be5be4ddb71e977f0010ae8b6e42"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/ui/components/ScreenScaffold.kt",
+    "sha256": "98323df05eccdb8e0e4e0ced6e293ede29427e883629176a7de0afd478ad256f"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/ui/components/SectionCard.kt",
+    "sha256": "dcbbd654f11e9360ee8d9f45be8a2738f9f35c307b541aa9560cdba52bdf2514"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/ui/components/SectionLayout.kt",
+    "sha256": "69eebb5507035c66298451f8d9532ee4651ebae0dbcc3df8c7d4de447cdc0e3f"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/ui/components/SquigglyProgressBar.kt",
+    "sha256": "896183785363bfe5572b6b8ab58c3a409bfdc9922f60f2fed8ed9c31acf43749"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/ui/theme/Color.kt",
+    "sha256": "aee8df9529af57ccbe6d8f48aa379ba4c9ad8af54c4137ff9cdbff1deab76b32"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/ui/theme/LogLineColor.kt",
+    "sha256": "947ec80a53cc13590ed1e4f18cc22e75daae9f4fe940a64b75f452c624c77b8c"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/ui/theme/Spacing.kt",
+    "sha256": "c37c56d3b0fa985b59b62acbdf8e3a576d5c942fce970b2f8cb70e3558951cec"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/ui/theme/Theme.kt",
+    "sha256": "fe0108ca3f8c6c1426daec4a82e1dd8410f279095b6d7e223f038e71ff80b80b"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/ui/theme/Type.kt",
+    "sha256": "62517bd2947abeb214aa6965b3da8f2023bbddbe4bebd22ab251b6a8cafb5636"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/application/appearance/AppearanceStore.kt",
+    "sha256": "28e19955d940541d3c8e784e3ab1af3ccf31ca591c7e5b862e4abe628adf8590"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/application/appearance/LocaleHelper.kt",
+    "sha256": "2e9df71e71023844d182c691e0a62094c71a6094bf4945eff1fa6624cfee17df"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/application/startup/StartupScreen.kt",
+    "sha256": "b0cdc22d8fed158e629e141db6aa638ee5cd51ad26cb72516b0befe6ab04a398"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/application/privacy/AnalyticsConsent.kt",
+    "sha256": "aac2a0eaec94af3da0171fdb74f586cb497c3899e5067052f573ec871f118114"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/application/privacy/PrivacyPolicy.kt",
+    "sha256": "22ca2602041b40d3cba2d2858b052dfd3b7af174a82b90ad6bc46ef224957607"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/application/distribution/SupportLink.kt",
+    "sha256": "bf4f9a678b8199dc423d26c8005c52e2e13d8b106f58b1c38de629a37c2b2d36"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/settings/AppApkSharer.kt",
+    "sha256": "d0f4e7691284644073df8aac7a5aad207d2fbc7b465250e475db289ca7a90043"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/settings/SettingsInfoTopics.kt",
+    "sha256": "60535311d58eb0e49c245bcdb3ea799418737bf471bea62e5c3a2df9fb36a4eb"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/settings/SettingsScreen.kt",
+    "sha256": "7d96d5246361352ca538f9488424e4e5351c22fd2268d7f62f9d26ad9cdfd3cb"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/settings/SettingsViewModel.kt",
+    "sha256": "8510d23c9bd633dcf26fd7293a7da9e28d17bfc6a70e7743b112e94f21829f27"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/about/AboutScreen.kt",
+    "sha256": "0f42481b1e26224cf0ba5a4ad7a6efbceb1e77704bd7ea9707b7d3dd6a16222d"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/legal/LegalComponents.kt",
+    "sha256": "13cdde681899f7469f96a19eaa07d1bc1e92c9fd5d2b2ca54e8931e414b5fb01"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/legal/LicensesScreen.kt",
+    "sha256": "3536d2b042e6f59f552db6365be5e7fec4db111607df0871e0c52767145cfc3b"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/legal/PrivacyPolicyScreen.kt",
+    "sha256": "6d97499c3a10811e009b59f75b70ba4b8335352e962d820fc6c4c676a33f0e08"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/legal/TermsScreen.kt",
+    "sha256": "59e90ea85c90f89320ffd7fca16ec534c338c8024210bbed5f897463a909c60b"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/logs/AppLogCollector.kt",
+    "sha256": "d2b91f9725083af66d28dd78cc7e87f4ba589ac6a55e2ad0dafb8fa4cdee0dfb"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/logs/BugReportExporter.kt",
+    "sha256": "fdf1ecbb25c5c0380924ce50427cc3dce649d7d7c09ad4d3f17aa99f7a0fcb6a"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/logs/CrashLogStore.kt",
+    "sha256": "26df0925b6a67d487b1ff0f90d3afe8f50bf0045185f5007521941e6c563832f"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/logs/LogcatLinePump.kt",
+    "sha256": "b0e1ef9dd3f28edbde6936358ec3d66397192a01ea35fc312415e1d6af83469e"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/logs/LogcatStreamer.kt",
+    "sha256": "a341909231d29d4238739656373e2de9de1aaf995e7451b94b1abe282c1d9d36"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/logs/LogcatTailBuffer.kt",
+    "sha256": "9a4f3eb6637785c252fd7aff94e9a05976e996ae3bef8aa8373fe3f6aeccd66a"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/logs/LogsScreen.kt",
+    "sha256": "265db927fe0dca16b5c047de57d641f7bd5877177739e4acd1757f9019614ec1"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/logs/LogsViewModel.kt",
+    "sha256": "41de0a78af09b8dc4ce5a7ef784cb4912a083d80637f3a58e7d5f0649874d1b7"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/logging/LogcatEntryParser.kt",
+    "sha256": "c85ff7e76114108352473e18410a00acf9260ed8c51e91c4f0c2d215dd4292d9"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/permissions/AppearanceStepScreen.kt",
+    "sha256": "a04ecbdcaf6b657506469a65b2c073696ec5ad39f161fa7cf090c759a40ebd72"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/permissions/AgreementStepScreen.kt",
+    "sha256": "da2a5c0ebff59898336c48d4f04b63811572f50a6d124a996e008d9132a632e5"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/permissions/OnboardingUi.kt",
+    "sha256": "17c4d33c058d27ae2a7c5f742443902fd0b6967226a7bbdb855b9911a66ee1eb"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/permissions/OnboardingState.kt",
+    "sha256": "8d5b634445715c2f1ce62e3bbfb75cec3e3828f548256b4873cac4f71461e6c2"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/permissions/OnboardingDraftStore.kt",
+    "sha256": "761377e0773c2c49fa104ed3eda087e35940a004995b9e478cc67165012b1ad1"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/gaming/glyph/GlyphController.kt",
+    "sha256": "02268afe27c2b6c60d5614612b856c23f7805adb2cbabaa5cbb3084947d0c772"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/screens/gaming/glyph/GlyphSyncStore.kt",
+    "sha256": "035b416e04a26c9281a74ee0f931b78e0e4f3bc7686e38045a91ce79eed0cb92"
+  },
+  {
+    "source": "app/src/main/java/com/catsmoker/app/system/MainActivity.kt",
+    "sha256": "4f438ba2df4f1153fc6b37d3fcaf25ef804ff08f2cb64a386b7998d872de254a"
+  },
+  {
+    "source": "app/src/playstore/java/com/catsmoker/app/integrations/ads/AdBanner.kt",
+    "sha256": "19f3a39223b0af1121c3e5c105d086725d88d71897f7e05e2320b691571c7793"
+  },
+  {
+    "source": "app/src/playstore/java/com/catsmoker/app/integrations/ads/AdConsentManager.kt",
+    "sha256": "4da99b98fa02e84ed264c37fe8fda8f6f546b8ae67703d53da6fb98023272bb8"
+  },
+  {
+    "source": "app/src/playstore/java/com/catsmoker/app/integrations/ads/AdConsentPolicy.kt",
+    "sha256": "54493ab80196d080afd5daf2b2367861cc4409efe482b1bf084632c5f317bb1f"
+  },
+  {
+    "source": "app/src/playstore/java/com/catsmoker/app/integrations/ads/BillingAcknowledgementPolicy.kt",
+    "sha256": "ecce0b6eecfd61f5a606469fc5ec92fb024c49449b48492e6ab38430ffaafe96"
+  },
+  {
+    "source": "app/src/playstore/java/com/catsmoker/app/integrations/ads/RemoveAdsPolicy.kt",
+    "sha256": "865bac4c4712483e9aab9943c214ad5bdc51e87199811cb9d2677642dca85fa6"
+  },
+  {
+    "source": "app/src/playstore/java/com/catsmoker/app/integrations/ads/RemoveAdsRepository.kt",
+    "sha256": "08a13089eb83e30e05eb3861f146488253fa49d50e89b6ebbf9702fd0e8db9a9"
+  },
+  {
+    "source": "app/src/playstore/java/com/catsmoker/app/system/ads/BillingAcknowledgementWorker.kt",
+    "sha256": "aae91913f1269f971fb10fceb72bcefd12ec3629041fb30d0d27218e71d2b36b"
+  },
+  {
+    "source": "app/src/playstore/java/com/catsmoker/app/application/privacy/DistributionPrivacyGate.kt",
+    "sha256": "e25bbe3c0350ae9d30facbbb85a3dd2a4e4f31801e2d5475d84eff4d5ac1a81d"
+  },
+  {
+    "source": "app/src/playstore/java/com/catsmoker/app/application/distribution/DistributionSupportAction.kt",
+    "sha256": "0bb9eefec28c8c606a68d206095ac017f8b78b79a98febb77bb11ba50026171d"
+  },
+  {
+    "source": "app/src/playstore/java/com/catsmoker/app/screens/settings/DistributionSettings.kt",
+    "sha256": "8c0b92de950cda51fd0c5aab1b362b85681c2003fb2fa9333c54b33ac941c8a4"
+  },
+  {
+    "source": "app/src/playstore/java/com/catsmoker/app/screens/settings/SettingsActions.kt",
+    "sha256": "9907e57b77ca9fbd1261e0a7146cdacff770cf15c6c9e2650be380fd8fdc9781"
+  },
+  {
+    "source": "app/libs/glyph-matrix-sdk-2.0.aar",
+    "sha256": "329393019db5f0f987c6245855d13fa273d06756c68829ca0f6ae686ba336da1"
+  },
+  {
+    "source": "app/src/main/res/font/ndot57_caps_regular.otf",
+    "sha256": "01621ee999e3a30cd49730a1de215e4d2c3f46f3a971920ae98f0d7a9e33e529"
+  },
+  {
+    "source": "app/src/main/res/font/ndot57_regular.otf",
+    "sha256": "8f99a991d2cab1010eaf79520a7ba9bb17d287b4757ba99ae9ff99c4db44367c"
+  },
+  {
+    "source": "app/src/main/res/xml/locales_config.xml",
+    "sha256": "cc22702e6d41ef7357756f0597da6c19e4b783f087db13d4b6f3ce43d0245b43"
+  },
+  {
+    "source": "app/src/main/res/raw/keep.xml",
+    "sha256": "aea974006c6f42c288a28be4bab7c6588157285b0d90c743279129f0e46548f4"
+  }
+]

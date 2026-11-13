@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "checks": 1370,
+  "failures": [],
+  "limitations": [
+    "Source checks only; inspect resolved dependencies and merged manifest separately.",
+    "No license clearance, security certification or policy compliance assertion."
+  ]
+}

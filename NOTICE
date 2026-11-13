@@ -1,0 +1,17 @@
+Android App Starter is adapted from CatSmoker, Copyright (c) 2025 catsmoker.
+Original project: https://github.com/catsmoker/catsmoker-app
+Original source license: Creative Commons Attribution-NonCommercial-ShareAlike 4.0.
+See the preserved LICENSE and https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+
+Changes: selective Play/shared-code extraction; neutral identity and navigation;
+removal of gaming/privileged/full-distribution capabilities; standalone build;
+general-purpose Glyph/Matrix controls; development service safeguards and sample legal content.
+No endorsement by the original author, Google or Nothing is implied.
+This notice is required source attribution, not the starter's product branding.
+
+Nothing Glyph Matrix SDK 2.0 is proprietary and retains its own notices/terms.
+See notices/NOTHING-SDK-LICENSE.md. Commercial use requires written permission;
+redistribution is restricted. Ndot fonts retained from source require separate rights review.
+AndroidX, Kotlin, Kotlin Coroutines and Dagger/Hilt retain their Apache-2.0 licenses.
+Google advertising, billing, consent and Firebase SDK terms apply separately.
+See notices/THIRD-PARTY.md. This starter does not relicense third-party components.

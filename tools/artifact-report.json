@@ -1,0 +1,160 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "debug merged manifest exists",
+      "passed": true
+    },
+    {
+      "check": "debug independent identity",
+      "passed": true
+    },
+    {
+      "check": "debug permission allowlist (including SDK requirements)",
+      "passed": true
+    },
+    {
+      "check": "debug no excluded components or Firebase auto-init",
+      "passed": true
+    },
+    {
+      "check": "debug one launcher",
+      "passed": true
+    },
+    {
+      "check": "debug no game package queries",
+      "passed": true
+    },
+    {
+      "check": "debug analytics default off",
+      "passed": true
+    },
+    {
+      "check": "Debug analytics SDK permanently deactivated",
+      "passed": true
+    },
+    {
+      "check": "Debug official test AdMob app ID",
+      "passed": true
+    },
+    {
+      "check": "release merged manifest exists",
+      "passed": true
+    },
+    {
+      "check": "release independent identity",
+      "passed": true
+    },
+    {
+      "check": "release permission allowlist (including SDK requirements)",
+      "passed": true
+    },
+    {
+      "check": "release no excluded components or Firebase auto-init",
+      "passed": true
+    },
+    {
+      "check": "release one launcher",
+      "passed": true
+    },
+    {
+      "check": "release no game package queries",
+      "passed": true
+    },
+    {
+      "check": "release analytics default off",
+      "passed": true
+    },
+    {
+      "check": "Successful resolved dependency evidence",
+      "passed": true
+    },
+    {
+      "check": "No full-only/privileged resolved dependencies",
+      "passed": true
+    },
+    {
+      "check": "Resolved built-in com.google.android.gms:play-services-ads:",
+      "passed": true
+    },
+    {
+      "check": "Resolved built-in com.google.firebase:firebase-analytics:",
+      "passed": true
+    },
+    {
+      "check": "Resolved built-in com.google.android.ump:user-messaging-platform:",
+      "passed": true
+    },
+    {
+      "check": "Resolved built-in com.android.billingclient:billing:",
+      "passed": true
+    },
+    {
+      "check": "Debug installable artifact exists",
+      "passed": true
+    },
+    {
+      "check": "APK contains compiled code",
+      "passed": true
+    },
+    {
+      "check": "No excluded APK class descriptor Lcom/catsmoker/",
+      "passed": true
+    },
+    {
+      "check": "No excluded APK class descriptor Lcom/startapp/",
+      "passed": true
+    },
+    {
+      "check": "No excluded APK class descriptor Lcom/topjohnwu/",
+      "passed": true
+    },
+    {
+      "check": "No excluded APK class descriptor Lrikka/shizuku/",
+      "passed": true
+    },
+    {
+      "check": "No excluded APK class descriptor Lde/robv/android/xposed/",
+      "passed": true
+    },
+    {
+      "check": "APK packages retained SDK EULA",
+      "passed": true
+    }
+  ],
+  "permissions": {
+    "debug": [
+      "android.permission.ACCESS_ADSERVICES_AD_ID",
+      "android.permission.ACCESS_ADSERVICES_ATTRIBUTION",
+      "android.permission.ACCESS_ADSERVICES_TOPICS",
+      "android.permission.ACCESS_NETWORK_STATE",
+      "android.permission.INTERNET",
+      "android.permission.POST_NOTIFICATIONS",
+      "android.permission.WAKE_LOCK",
+      "com.android.vending.BILLING",
+      "com.example.androidstarter.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+      "com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE",
+      "com.google.android.gms.permission.AD_ID",
+      "com.nothing.ketchum.permission.ENABLE"
+    ],
+    "release": [
+      "android.permission.ACCESS_ADSERVICES_AD_ID",
+      "android.permission.ACCESS_ADSERVICES_ATTRIBUTION",
+      "android.permission.ACCESS_ADSERVICES_TOPICS",
+      "android.permission.ACCESS_NETWORK_STATE",
+      "android.permission.INTERNET",
+      "android.permission.POST_NOTIFICATIONS",
+      "android.permission.WAKE_LOCK",
+      "com.android.vending.BILLING",
+      "com.example.androidstarter.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+      "com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE",
+      "com.google.android.gms.permission.AD_ID",
+      "com.nothing.ketchum.permission.ENABLE"
+    ]
+  },
+  "debug_apk_sha256": "2f49e02b2beb6660c586328d2f84a6a4fe7528b2f23f8da41d59d52725f1ba46",
+  "limitations": [
+    "Release was compiled and manifest-processed, not shrunk, signed or bundled.",
+    "Binary descriptor scan is bounded; this is not a vulnerability/license/policy audit."
+  ]
+}

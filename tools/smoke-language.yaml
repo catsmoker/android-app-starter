@@ -1,0 +1,50 @@
+appId: com.example.androidstarter
+name: Language persistence and safe service diagnostics
+---
+- launchApp:
+    clearState: false
+    permissions:
+      notifications: unset
+- runFlow:
+    when:
+      visible: "(?i)LATER"
+    commands:
+      - tapOn: "(?i)LATER"
+- assertVisible: "Make yourself at home"
+- scrollUntilVisible:
+    element: "Development safeguard: official Google test ads only.*"
+    direction: DOWN
+- assertVisible: "Development safeguard: official Google test ads only.*"
+- scrollUntilVisible:
+    element: "Settings"
+    direction: UP
+- tapOn: "Settings"
+- tapOn: "Language: .*"
+- tapOn: "العربية"
+- assertVisible: "الإعدادات"
+- tapOn: "الإعدادات"
+- assertVisible: "اللغة: العربية"
+- assertVisible: "السمة: داكن"
+- takeScreenshot: rtl-settings
+- stopApp
+- launchApp:
+    clearState: false
+    permissions:
+      notifications: unset
+- runFlow:
+    when:
+      visible: "لاحقًا"
+    commands:
+      - tapOn: "لاحقًا"
+- tapOn: "الإعدادات"
+- assertVisible: "اللغة: العربية"
+- tapOn: "اللغة: العربية"
+- tapOn: "English"
+- runFlow:
+    when:
+      visible: "(?i)LATER"
+    commands:
+      - tapOn: "(?i)LATER"
+- tapOn: "Settings"
+- assertVisible: "Language: English"
+- assertVisible: "Theme: Dark"

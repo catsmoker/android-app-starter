@@ -1,0 +1,58 @@
+appId: com.example.androidstarter
+name: Starter smoke (no purchases, no external links)
+---
+- launchApp:
+    clearState: false
+    permissions:
+      notifications: unset
+- runFlow:
+    when:
+      visible: "Welcome to Android App Starter"
+    commands:
+      - tapOn: "CONTINUE"
+      - assertVisible: "I agree to the terms."
+      - tapOn: "I agree to the terms."
+      - tapOn: "CONTINUE"
+      - assertVisible: "Optional permission. You can continue without it."
+      - tapOn: "Done"
+- runFlow:
+    when:
+      visible: "(?i)LATER"
+    commands:
+      - tapOn: "(?i)LATER"
+- assertVisible: "Make yourself at home"
+- tapOn: "Glyph & Matrix"
+- assertVisible: "Glyph and Matrix controls are unavailable on this device.*"
+- back
+- tapOn: "Settings"
+- tapOn: "Theme: .*"
+- tapOn: "Dark"
+- tapOn: "Theme: .*"
+- assertVisible: "Dark"
+- back
+- back
+- tapOn: "Support the developer"
+- assertVisible: "Thank you for your support"
+- assertVisible: "Remove Ads"
+- back
+- tapOn: "About Android App Starter"
+- scrollUntilVisible:
+    element: "Open Source Licenses"
+    direction: DOWN
+- tapOn: "Open Source Licenses"
+- assertVisible: "Apache License 2.0"
+- back
+- back
+- stopApp
+- launchApp:
+    clearState: false
+    permissions:
+      notifications: unset
+- runFlow:
+    when:
+      visible: "(?i)LATER"
+    commands:
+      - tapOn: "(?i)LATER"
+- assertVisible: "Make yourself at home"
+- tapOn: "Settings"
+- assertVisible: "Theme: Dark"

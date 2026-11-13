@@ -1,0 +1,36 @@
+appId: com.example.androidstarter
+name: Settings return and legal destinations
+---
+- launchApp:
+    clearState: false
+    permissions:
+      notifications: unset
+- runFlow:
+    when:
+      visible: "(?i)LATER"
+    commands:
+      - tapOn: "(?i)LATER"
+- tapOn: "Settings"
+- scrollUntilVisible:
+    element: "App Permissions"
+    direction: DOWN
+- tapOn: "App Permissions"
+- assertVisible: "Optional permission. You can continue without it."
+- tapOn: "Done"
+- assertVisible: "App configuration and preferences."
+- back
+- tapOn: "About Android App Starter"
+- scrollUntilVisible:
+    element: "Privacy Policy"
+    direction: DOWN
+- tapOn: "Privacy Policy"
+- assertVisible: ".*SAMPLE.*"
+- back
+- scrollUntilVisible:
+    element: "Terms.*"
+    direction: DOWN
+- tapOn: "Terms.*"
+- assertVisible: ".*SAMPLE.*"
+- back
+- back
+- assertVisible: "Make yourself at home"

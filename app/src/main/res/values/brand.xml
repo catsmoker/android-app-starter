@@ -1,0 +1,10 @@
+<resources>
+<string name="developer_name" translatable="false">Your Developer Name</string>
+<string name="url_github" translatable="false">https://example.com/source</string>
+<string name="url_webpage" translatable="false">https://example.com</string>
+<string name="url_contact" translatable="false">mailto:developer@example.invalid</string>
+<string name="url_support" translatable="false">https://example.com/support</string>
+<string name="url_legal" translatable="false">https://example.com/privacy</string>
+<string name="url_terms" translatable="false">https://example.com/terms</string>
+<string name="url_license" translatable="false">https://creativecommons.org/licenses/by-nc-sa/4.0/</string>
+</resources>

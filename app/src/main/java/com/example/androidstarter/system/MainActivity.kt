@@ -1,0 +1,274 @@
+package com.example.androidstarter.system
+
+import com.example.androidstarter.R
+
+import android.app.ActivityManager
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
+import android.os.Bundle
+import android.view.Window
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.selection.toggleable
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.minimumInteractiveComponentSize
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.unit.dp
+import androidx.core.content.edit
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.compose.rememberNavController
+import com.example.androidstarter.application.appearance.AppearanceStore
+import com.example.androidstarter.application.appearance.LocaleHelper
+import com.example.androidstarter.application.distribution.DistributionSupportAction
+import com.example.androidstarter.application.navigation.AppNavHost
+import com.example.androidstarter.application.navigation.Routes
+import com.example.androidstarter.application.privacy.DistributionPrivacyGate
+import com.example.androidstarter.application.startup.StartupScreen
+import com.example.androidstarter.ui.theme.StarterTheme
+import dagger.hilt.android.AndroidEntryPoint
+import kotlin.time.Duration.Companion.milliseconds
+import kotlinx.coroutines.delay
+
+/**
+ * Support-dialog prompt state, persisted in `app_prefs` next to `app_launch_count`.
+ *
+ * The dialog shows every 5th launch; from its second showing it offers a "Do not show
+ * again" checkbox. Pure data + pure policy below so the rules stay unit-tested — the
+ * Activity only reads/writes the prefs.
+ */
+internal data class SupportPromptState(
+    val timesShown: Int = 0,
+    val neverAskAgain: Boolean = false
+)
+
+internal fun shouldShowSupportDialog(
+    launchCount: Int,
+    state: SupportPromptState,
+    isFirstRun: Boolean = false,
+): Boolean =
+    !isFirstRun && !state.neverAskAgain && launchCount > 0 && launchCount % 5 == 0
+
+internal fun showNeverAskOption(state: SupportPromptState): Boolean =
+    state.timesShown >= 1
+
+internal fun onSupportDialogShown(state: SupportPromptState): SupportPromptState =
+    state.copy(timesShown = state.timesShown + 1)
+
+@AndroidEntryPoint
+class MainActivity : ComponentActivity() {
+    @javax.inject.Inject lateinit var purchases: com.example.androidstarter.integrations.ads.RemoveAdsRepository
+
+    override fun onResume() { super.onResume(); if (::purchases.isInitialized) purchases.refresh() }
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LocaleHelper.wrap(newBase))
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
+        installSplashScreen()
+        // Request no title bar before super.onCreate
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+
+        super.onCreate(savedInstanceState)
+
+        incrementLaunchCount()
+
+
+        // Fix for icon and label in recent apps overview
+        updateTaskDescription()
+
+        val startDestination = if (isFirstRun()) Routes.PERMISSION else Routes.MAIN
+        val isFreshLaunch = savedInstanceState == null
+
+        setContent {
+            AppearanceStore.init(applicationContext)
+            val themeMode by AppearanceStore.themeMode.collectAsStateWithLifecycle()
+            val darkTheme = when (themeMode) {
+                AppearanceStore.ThemeMode.DARK -> true
+                AppearanceStore.ThemeMode.LIGHT -> false
+                // System default and Dynamic — the phone's own dark/light setting wins.
+                // Dynamic differs only in palette (wallpaper colors, API 31+), not in
+                // which side of dark/light is picked.
+                AppearanceStore.ThemeMode.SYSTEM,
+                AppearanceStore.ThemeMode.DYNAMIC -> isSystemInDarkTheme()
+            }
+            StarterTheme(
+                darkTheme = darkTheme,
+                dynamicColor = themeMode == AppearanceStore.ThemeMode.DYNAMIC
+            ) {
+                var showStartup by remember { mutableStateOf(isFreshLaunch) }
+                var showSupportDialog by remember { mutableStateOf(shouldShowSupportDialog()) }
+                // Prompt state read once: it decides whether this showing offers the
+                // "Do not show again" checkbox (2nd showing on). The shown-count itself
+                // is recorded by the LaunchedEffect below, once per actual display.
+                val supportState = remember { supportPromptState() }
+                var neverAskChecked by remember { mutableStateOf(false) }
+                val closeSupportDialog: () -> Unit = {
+                    if (neverAskChecked) setSupportNeverAsk()
+                    showSupportDialog = false
+                }
+                // Hoisted above the dialog so Donate can navigate: the dialog lives outside
+                // the NavHost, and creating a second controller here would split the back stack.
+                val navController = rememberNavController()
+
+                // Gate dialog presentation on the activity not stopping: once onStop/onDestroy
+                // has begun, WindowManager may already be tearing down the window binder, and
+                // presenting a dialog here triggers DeadObjectException in
+                // dispatchAppVisibility (see F-03 in the audit report).
+                val lifecycleOwner: LifecycleOwner = this@MainActivity
+                var isFinishing by remember { mutableStateOf(false) }
+                DisposableEffect(lifecycleOwner) {
+                    val observer = LifecycleEventObserver { _, event ->
+                        if (event == Lifecycle.Event.ON_STOP || event == Lifecycle.Event.ON_DESTROY) {
+                            isFinishing = true
+                        } else if (event == Lifecycle.Event.ON_RESUME) {
+                            isFinishing = false
+                        }
+                    }
+                    lifecycleOwner.lifecycle.addObserver(observer)
+                    onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+                }
+
+                if (!showStartup && showSupportDialog && !isFinishing) {
+                    LaunchedEffect(Unit) { markSupportDialogShown() }
+                    AlertDialog(
+                        onDismissRequest = { closeSupportDialog() },
+                        title = { Text(stringResource(R.string.sys_support_title), color = MaterialTheme.colorScheme.onSurface) },
+                        text = {
+                            Column {
+                                Text(
+                                    stringResource(R.string.sys_support_text),
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                                if (showNeverAskOption(supportState)) {
+                                    Row(
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        modifier = Modifier
+                                            .padding(top = 8.dp)
+                                            .minimumInteractiveComponentSize()
+                                            .toggleable(
+                                                value = neverAskChecked,
+                                                role = Role.Checkbox,
+                                                onValueChange = { neverAskChecked = it }
+                                            )
+                                    ) {
+                                        Checkbox(
+                                            checked = neverAskChecked,
+                                            onCheckedChange = null,
+                                            modifier = Modifier.padding(horizontal = 12.dp)
+                                        )
+                                        Text(
+                                            stringResource(R.string.sys_support_never),
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                                        )
+                                    }
+                                }
+                            }
+                        },
+                        confirmButton = {
+                            Column(horizontalAlignment = Alignment.End) {
+                                TextButton(onClick = {
+                                    if (DistributionSupportAction.open(this@MainActivity)) {
+                                        closeSupportDialog()
+                                    }
+                                }) { Text(stringResource(R.string.sys_support_star), color = MaterialTheme.colorScheme.onSurface) }
+                                TextButton(onClick = {
+                                    closeSupportDialog()
+                                    navController.navigate(Routes.DONATE)
+                                }) { Text(stringResource(R.string.sys_support_donate), color = MaterialTheme.colorScheme.onSurface) }
+                            }
+                        },
+                        dismissButton = {
+                            TextButton(onClick = { closeSupportDialog() }) {
+                                Text(stringResource(R.string.sys_later), color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            }
+                        },
+                        containerColor = MaterialTheme.colorScheme.surface,
+                        titleContentColor = MaterialTheme.colorScheme.onSurface,
+                        textContentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    if (showStartup) {
+                        StartupScreen(onFinished = { showStartup = false })
+                    } else {
+                        AppNavHost(navController = navController, startDestination = startDestination)
+                        DistributionPrivacyGate()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun updateTaskDescription() {
+        // Every TaskDescription constructor is deprecated on the compile SDK with no
+        // replacement offered; the single-arg form is the minimal correct usage (label
+        // only, app icon by default) and still functions on all API levels.
+        try {
+            setTaskDescription(ActivityManager.TaskDescription(getString(R.string.app_name)))
+        } catch (_: Exception) {}
+    }
+
+    private fun isFirstRun(): Boolean {
+        val prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
+        return prefs.getBoolean("is_first_run", true)
+    }
+
+    private fun incrementLaunchCount() {
+        val prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
+        val count = prefs.getInt("app_launch_count", 0) + 1
+        prefs.edit { putInt("app_launch_count", count) }
+    }
+
+    private fun shouldShowSupportDialog(): Boolean {
+        val prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
+        val count = prefs.getInt("app_launch_count", 0)
+        return shouldShowSupportDialog(count, supportPromptState(prefs), isFirstRun = isFirstRun())
+    }
+
+    private fun supportPromptState(
+        prefs: SharedPreferences = getSharedPreferences("app_prefs", MODE_PRIVATE)
+    ): SupportPromptState = SupportPromptState(
+        timesShown = prefs.getInt("support_shown_count", 0),
+        neverAskAgain = prefs.getBoolean("support_never_ask", false)
+    )
+
+    private fun markSupportDialogShown() {
+        val prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
+        val next = onSupportDialogShown(supportPromptState(prefs))
+        prefs.edit { putInt("support_shown_count", next.timesShown) }
+    }
+
+    private fun setSupportNeverAsk() {
+        getSharedPreferences("app_prefs", MODE_PRIVATE).edit { putBoolean("support_never_ask", true) }
+    }
+}
